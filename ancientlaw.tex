@@ -1,0 +1,38 @@
+\documentclass[b5paper]{book}
+\usepackage{geometry}
+\usepackage{emptypage}
+
+\tracinglostchars=3
+
+\usepackage[hangul]{kotex}
+\ifluatex
+  \defaultfontfeatures+{Renderer=HarfBuzz}
+  \registerpunctuations{`-}
+\fi
+\setmainhangulfont{Noto Serif CJK KR}
+  [Script=Hangul, Language=Korean, AutoFakeSlant]
+\setsanshangulfont{Noto Sans CJK KR}
+  [Script=Hangul, Language=Korean, AutoFakeSlant]
+
+\renewcommand\chaptermark[1]{\markboth{\textit{#1}}{}}
+
+\def\para#1{\leavevmode\marginpar{\footnotesize #1}\markright{#1}\ignorespaces}
+
+\def\hanja#1{\begingroup\scriptsize #1\endgroup}
+\def\latin#1{\begingroup\footnotesize #1\endgroup}
+\def\hemph#1{\begingroup\sffamily\bfseries #1\endgroup}
+\linespread{1.4}
+\begin{document}
+
+\title{고대법\\
+\large 사회의 초기 역사 및 그것의 근대 관념과의 관계에 대하여}
+\author{헨리 섬너 메인 지음\\
+김 도현 옮김}
+\date{1861 (1920)}
+\maketitle
+
+\mainmatter
+
+\include{ch1}
+
+\end{document}
