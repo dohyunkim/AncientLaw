@@ -33,18 +33,18 @@
 
 \renewcommand\chaptermark[1]{\markboth{\textit{#1}}{}}
 
-\def\para#1{\leavevmode\marginpar{\footnotesize #1}\markright{#1}\ignorespaces}
-
+\def\para#1{\leavevmode
+  \marginpar{\sffamily\footnotesize #1}\markright{#1}\ignorespaces}
 \def\hanja#1{\begingroup\scriptsize #1\endgroup}
 \def\latin#1{\begingroup\footnotesize #1\endgroup}
 \def\hemph#1{\begingroup\sffamily\bfseries #1\endgroup}
+\def\hanjalatin#1#2{\hanja{#1}\hskip.1em plus.05em minus.025em\latin{#2}}
+
 \linespread{1.4}
 \skip\footins=12pt plus 8pt minus 4pt
 
-\includeonly{
-  ch1,
-  ch2,
-  }
+%\includeonly{ch2}
+
 \begin{document}
 
 \title{고대법\\
