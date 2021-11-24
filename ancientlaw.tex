@@ -8,6 +8,10 @@
 \ifluatex
   \defaultfontfeatures+{Renderer=HarfBuzz}
   \registerpunctuations{`-}
+  \def\hyphlatin#1{\unregisterpunctuations{`-}#1\registerpunctuations{`-}}
+\else
+  \hangulhyphens
+  \def\hyphlatin#1{{\latinhyphens#1}}
 \fi
 \setmainhangulfont{Noto Serif CJK KR}
   [Script=Hangul, Language=Korean, AutoFakeSlant]
@@ -43,7 +47,7 @@
 \linespread{1.4}
 \skip\footins=10pt plus 8pt minus 2pt
 
-%\includeonly{ch3}
+%\includeonly{ch4}
 
 \begin{document}
 
@@ -59,5 +63,6 @@
 \include{ch1}
 \include{ch2}
 \include{ch3}
+\include{ch4}
 
 \end{document}
