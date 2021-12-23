@@ -1,19 +1,14 @@
 \documentclass[b5paper]{book}
 \usepackage{geometry}
 \usepackage{emptypage}
-
-\tracinglostchars=3
-
 \usepackage[hangul]{kotex}
 \usepackage{hyperref}
 
 \ifluatex
   \defaultfontfeatures+{Renderer=HarfBuzz}
   \registerpunctuations{`-}
-  \def\hyphlatin#1{\unregisterpunctuations{`-}#1\registerpunctuations{`-}}
 \else
   \hangulhyphens
-  \def\hyphlatin#1{{\latinhyphens#1}}
 \fi
 \setmainhangulfont{Noto Serif CJK KR}
   [Script=Hangul, Language=Korean, AutoFakeSlant]
@@ -40,14 +35,23 @@
 \renewcommand\chaptermark[1]{\markboth{\textit{#1}}{}}
 
 \def\para#1{\leavevmode
-  \marginpar{\sffamily\footnotesize #1}\markright{#1}\ignorespaces}
+  \marginpar{\linespread{1.1}\sffamily\footnotesize \raggedright
+    #1}\markright{#1}\ignorespaces}
 \def\hanja#1{\begingroup\scriptsize #1\endgroup}
-\def\latin#1{\begingroup\footnotesize #1\endgroup}
+\ifluatex
+  \def\latin#1{\begingroup\hangulpunctuations=0
+    \footnotesize #1\hangulpunctuations=1 \endgroup}
+\else
+  \def\latin#1{\begingroup\latinmarks\footnotesize #1\endgroup}
+\fi
 \def\hemph#1{\begingroup\sffamily\bfseries #1\endgroup}
 \def\hanjalatin#1#2{\hanja{#1}\hskip.15em plus.05em minus.02em\latin{#2}}
 
+\tracinglostchars=3
+
 \linespread{1.4}
-\skip\footins=8pt plus 8pt minus 2pt
+\skip\footins=8pt plus 8pt minus 4pt
+\footnotesep=9.5pt
 
 %\includeonly{ch5}
 
