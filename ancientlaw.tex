@@ -6,7 +6,7 @@
 
 \ifluatex
   \defaultfontfeatures+{Renderer=HarfBuzz}
-  \registerpunctuations{`-}
+  \registerpunctuations{`-,`[,`]}
 \else
   \hangulhyphens
 \fi
@@ -39,13 +39,16 @@
     #1}\markright{#1}\ignorespaces}
 \def\hanja#1{\begingroup\scriptsize #1\endgroup}
 \ifluatex
-  \def\latin#1{\begingroup\hangulpunctuations=0
+  \def\latin#1{\ifnum\lastskip=0 \penalty50 \hskip0pt plus.25pt minus.15pt\fi
+    \begingroup\hangulpunctuations=0
     \footnotesize #1\hangulpunctuations=1 \endgroup}
 \else
-  \def\latin#1{\begingroup\latinmarks\footnotesize #1\endgroup}
+  \def\latin#1{\ifnum\lastskip=0 \penalty50 \hskip.5pt plus.4pt minus.2pt\fi
+    \begingroup\latinmarks\footnotesize #1\endgroup}
 \fi
 \def\hemph#1{\begingroup\sffamily\bfseries #1\endgroup}
 \def\hanjalatin#1#2{\hanja{#1}\hskip.15em plus.05em minus.02em\latin{#2}}
+\def\paren#1{\begingroup\small(#1)\endgroup}
 
 \tracinglostchars=3
 
