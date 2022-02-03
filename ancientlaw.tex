@@ -13,7 +13,7 @@
 \setmainhangulfont{Noto Serif CJK KR}
   [Script=Hangul, Language=Korean, AutoFakeSlant]
 \setsanshangulfont{Noto Sans CJK KR}
-  [Script=Hangul, Language=Korean, AutoFakeSlant]
+  [Script=Hangul, Language=Korean, AutoFakeSlant, BoldFont=* Bold]
 
 \makeatletter
 \def\@makechapterhead#1{%
@@ -29,7 +29,7 @@
     \interlinepenalty\@M
     \linespread{1.26}%
     \Huge \bfseries #1\par\nobreak
-    \vskip 40\p@
+    \vskip 40\p@ plus 1pt minus 1pt
   }}
 \makeatother
 
@@ -51,11 +51,19 @@
 \def\hanjalatin#1#2{\hanja{#1}\hskip.1em plus.05em minus.02em\latin{#2}}
 \def\paren#1{\begingroup\small(#1)\endgroup}
 
+\def\origfootnote#1{%
+  \begingroup
+  \def\thefootnote{\fnsymbol{footnote}}%
+  \footnote[1]{#1}%
+  \endgroup
+}
+
 \tracinglostchars=3
 
 \linespread{1.4}
 \skip\footins=8pt plus 8pt minus 4pt
 \footnotesep=9.5pt
+\parskip=0pt plus .5pt\relax
 
 %\includeonly{ch9}
 
@@ -71,6 +79,29 @@
 \frontmatter
 
 \maketitle
+
+\null\vfill
+\thispagestyle{empty}
+\begin{enumerate}
+    \small
+  \item \latin{\small
+    Henry Sumner Maine, \textit{Ancient Law: Its Connection with
+    the Early History of Society and its Relation to Modern Ideas}, with
+    introduction and notes by Frederick Pollock, London: John Murray,
+    1906}을 우리말로 옮긴 것이다.
+  \item <<고대법>>은 1861년 초판이 발행되었고,
+    메인에 의해 출간된 마지막 판은 1884년의 제10판이다.
+    번역은 프레데릭 폴록의 주석이
+    각 장의 말미에 붙은 1906년판을 대상으로 하였으나,
+    폴록의 주석은 따로 옮기지 않았으므로
+    메인의 제10판을 번역한 것에 해당한다.
+  \item 문단 첫 머리의 여백에 붙은 면주는 원서 페이지 상단의 면주를
+    번역하여 달아놓은 것이다.
+    때로는 초판의 상단 면주를 참조하기도 했다.
+  \item 옮긴이의 각주는 숫자로 일련번호를 표시했으며,
+    매우 드문 지은이의 각주는 별표($^*$)로 표시했다.
+\end{enumerate}
+
 \tableofcontents
 
 \mainmatter
