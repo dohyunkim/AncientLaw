@@ -7,6 +7,8 @@
 \ifluatex
   \defaultfontfeatures+{Renderer=HarfBuzz}
   \registerpunctuations{`-,`[,`]}
+  \def\latinmarks{\hangulpunctuations=0
+    \aftergroup\hangulpunctuations\aftergroup1\aftergroup\relax }
 \else
   \hangulhyphens
 \fi
@@ -39,17 +41,14 @@
   \marginpar{\linespread{1.1}\sffamily\footnotesize \raggedright
     #1}\markright{#1}\ignorespaces}
 \def\hanja#1{\begingroup\scriptsize #1\endgroup}
-\ifluatex
-  \def\latin#1{\ifnum\lastskip=0 \penalty50 \hskip0pt plus.25pt minus.15pt\fi
-    \begingroup\hangulpunctuations=0
-    \footnotesize #1\hangulpunctuations=1 \endgroup}
-\else
-  \def\latin#1{\ifnum\lastskip=0 \penalty50 \hskip.5pt plus.4pt minus.2pt\fi
-    \begingroup\latinmarks\footnotesize #1\endgroup}
-\fi
+\def\latin#1{\ifnum\lastskip=0 \penalty50 \hskip0pt plus.25pt minus.15pt\fi
+  \begingroup\latinmarks\footnotesize #1\endgroup}
 \def\hemph#1{\begingroup\sffamily\bfseries #1\endgroup}
 \def\hanjalatin#1#2{\hanja{#1}\hskip.1em plus.05em minus.02em\latin{#2}}
 \def\paren#1{\begingroup\small(#1)\endgroup}
+
+\def\greekfont{\fontspec{GFSPorson.otf}}
+\def\greek#1{\begingroup\greekfont\latin{#1}\endgroup}
 
 \def\origfootnote#1{%
   \begingroup
@@ -65,13 +64,13 @@
 \footnotesep=9.5pt
 \parskip=0pt plus .5pt\relax
 
-%\includeonly{ch9}
+%\includeonly{ch10}
 
 \begin{document}
 
 \title{고대법\\
 \large 그것은 사회의 초기 역사와 어떤 관련이 있으며\\
-근대 관념에 대해서는 어떤 관계를 가지는가}
+근대 관념과는 어떤 관계를 가지는가}
 \author{헨리 섬너 메인 지음\\
 김 도현 옮김}
 \date{1906 (1861, 1884)}
@@ -86,8 +85,8 @@
     \small
   \item \latin{\small
     Henry Sumner Maine, \textit{Ancient Law: Its Connection with
-    the Early History of Society and its Relation to Modern Ideas}, with
-    introduction and notes by Frederick Pollock, London: John Murray,
+    the Early History of Society and Its Relation to Modern Ideas}, with
+    Introduction and Notes by Frederick Pollock, London: John Murray,
     1906}을 우리말로 옮긴 것이다.
   \item <<고대법>>은 1861년 초판이 발행되었고,
     메인에 의해 출간된 마지막 판은 1884년의 제10판이다.
@@ -95,7 +94,7 @@
     각 장의 말미에 붙은 1906년판을 대상으로 하였으나,
     폴록의 주석은 따로 옮기지 않았으므로
     메인의 제10판을 번역한 것에 해당한다.
-  \item 문단 첫 머리의 여백에 붙은 면주는 원서 페이지 상단의 면주를
+  \item 문단 첫 머리의 좌우 여백에 붙은 면주는 원서 페이지 상단의 면주를
     번역하여 달아놓은 것이다.
     때로는 초판의 상단 면주를 참조하기도 했다.
   \item 본문 중에서 돋움체로 강조된 부분은
