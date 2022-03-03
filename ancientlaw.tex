@@ -57,6 +57,10 @@
   \endgroup
 }
 
+\usepackage{makeidx}
+\def\wi#1{\index{#1}#1}
+\makeindex
+
 \tracinglostchars=3
 
 \linespread{1.4}
@@ -127,5 +131,10 @@
 \include{ch8}
 \include{ch9}
 \include{ch10}
+
+\backmatter
+
+\def\seename{$\rightarrow$}
+\printindex
 
 \end{document}
