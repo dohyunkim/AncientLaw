@@ -58,7 +58,7 @@
 }
 
 \usepackage{makeidx}
-\def\wi#1{\index{#1}#1}
+\def\wi#1{\leavevmode\index{#1}#1}
 \makeindex
 
 \tracinglostchars=3
@@ -135,6 +135,8 @@
 \backmatter
 
 \def\seename{$\rightarrow$}
+\let\alsoname\seename
+\raggedright
 \printindex
 
 \end{document}
