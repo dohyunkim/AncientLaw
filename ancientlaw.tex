@@ -3,6 +3,7 @@
 \usepackage{emptypage}
 \usepackage[hangul]{kotex}
 \usepackage{hyperref}
+\usepackage{makeidx}
 
 \ifluatex
   \defaultfontfeatures+{Renderer=HarfBuzz}
@@ -50,14 +51,20 @@
 \def\greekfont{\fontspec{GFSPorson.otf}}
 \def\greek#1{\begingroup\greekfont\latin{#1}\endgroup}
 
-\def\origfootnote#1{%
+\let\latexfootnote\footnote
+\long\def\footnote#1{%
+  \footnotemark
+  \vadjust {%
+    \penalty0\relax
+    \footnotetext{#1}}%
+}
+\long\def\origfootnote#1{%
   \begingroup
   \def\thefootnote{\fnsymbol{footnote}}%
-  \footnote[1]{#1}%
+  \latexfootnote[1]{#1}%
   \endgroup
 }
 
-\usepackage{makeidx}
 \def\wi#1{\leavevmode\index{#1}#1}
 \makeindex
 
